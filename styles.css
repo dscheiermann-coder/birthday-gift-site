@@ -12,12 +12,13 @@ h1, h2, h3, h4, p {
 }
 
 #bff-img {
-    width: 40%;              /* statt fixer Pixel */
+    width: 40%;              /* Bild passt sich an Container an */
     max-width: 180px;        /* auf Desktop nicht zu groß */
-    border-radius: 50%;
+    aspect-ratio: 1/1;       /* immer quadratisch */
+    object-fit: cover;       /* schneidet sauber zu */
+    border-radius: 50%;      /* daraus wird ein Kreis */
     border: 6px solid #EFB0C9;
-    margin-bottom: 10px;
-    height: auto;            /* verhindert Verzerrung */
+    margin-bottom: 10px;         /* verhindert Verzerrung */
 }
 
 #bday-age, #bday-date {
