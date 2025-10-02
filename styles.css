@@ -3,6 +3,8 @@ body {
     font-family: 'Happy Monkey', cursive;
     background: linear-gradient(#a2d2ff, #EFB0C9);
     color: #ffffff;
+    margin: 0;
+    padding: 0;
 }
 
 h1, h2, h3, h4, p {
@@ -10,34 +12,33 @@ h1, h2, h3, h4, p {
 }
 
 #bff-img {
-    width: 150px;
+    width: 40%;              /* statt fixer Pixel */
+    max-width: 180px;        /* auf Desktop nicht zu groß */
     border-radius: 50%;
     border: 6px solid #EFB0C9;
     margin-bottom: 10px;
+    height: auto;            /* verhindert Verzerrung */
 }
 
-#bday-age {
+#bday-age, #bday-date {
     background: #EFB0C9;
     padding: 5px 10px;
     border-radius: 5px;
     margin: 5px 0 10px 0;
-}
-
-#bday-date {
-    margin: 0;
-    background: #EFB0C9;
-    padding: 5px 10px;
-    border-radius: 5px;
+    display: inline-block;
 }
 
 #header {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 20px;
 }
 
 .gift-section {
-    margin-top: 50px;
+    margin: 40px auto;
+    padding: 0 15px;
+    max-width: 700px;
 }
 
 .gift-title {
@@ -48,58 +49,66 @@ h1, h2, h3, h4, p {
     margin-top: 0;
 }
 
-#gift-img-cheers {
-    height: 200px;
-}
-
 .gift-img {
     margin: 20px auto;
-    max-width: 400px;
-    height: 400px;
+    width: 100%;
+    max-width: 400px;       /* begrenzt auf großen Screens */
+    aspect-ratio: 1/1;      /* bleibt quadratisch, passt sich an */
     border: 6px solid white;
     border-radius: 10px;
     background-image: url("images/gift-cover.jpg");
     background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease;
 }
 
-#gift-img-happy:hover {
-    background-image: url("images/happy.gif");
+.gift-img:hover {
+    transform: scale(1.05);
 }
 
-#gift-img-hot:hover {
-    background-image: url("images/hot.gif");
-}
-
-#gift-img-genius:hover {
-    background-image: url("images/genius.gif");
-}
-
-#gift-img-badass:hover {
-    background-image: url("images/badass.gif");
-}
-
-#gift-img-cheers:hover {
-    background-image: url("images/cheers.gif");
-}
+/* Hover-Bilder */
+#gift-img-happy:hover { background-image: url("images/happy.gif"); }
+#gift-img-hot:hover   { background-image: url("images/hot.gif"); }
+#gift-img-genius:hover{ background-image: url("images/genius.gif"); }
+#gift-img-badass:hover{ background-image: url("images/badass.gif"); }
+#gift-img-cheers:hover{ background-image: url("images/cheers.gif"); }
 
 #footer {
     font-style: italic;
-    width: 400px;
+    max-width: 90%;        /* flexibler als feste 400px */
     margin: 40px auto 20px;
+    padding: 0 10px;
 }
 
 a {
     color: white;
 }
 
-/* 
-Add the footer paragraph according to the design. 
-Configure the anchor tag to open the link in a new tab.
-Forgotten how to do it? Google it! 
+/* 📱 Responsive Anpassungen */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.6rem;
+    }
 
-Link: 
-https://scrimba.com/learn/htmlandcss
+    .gift-img {
+        max-width: 300px;
+    }
+}
 
-Text:
-Want to create your own Birthday GIFt site? Take this HTML & CSS course.
-*/
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.2rem;
+    }
+
+    h2, h3, h4 {
+        font-size: 1rem;
+    }
+
+    .gift-img {
+        max-width: 90%;
+    }
+
+    #bff-img {
+        width: 60%;         /* auf sehr kleinen Screens größer wirken */
+    }
+}
